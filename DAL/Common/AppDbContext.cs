@@ -12,8 +12,7 @@ namespace DAL.Common
     {
         public DbSet<Contact> Contacts { get; set; }
 
-        public AppDbContext(string connectionString)
-            : base(connectionString)
+        public AppDbContext() : base("DefaultConnection")
         { }
     }
 }

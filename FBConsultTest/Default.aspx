@@ -39,4 +39,16 @@
         </div>
     </div>
 
+    <div id="app">
+        <input type="text" name="name" v-model="name" />
+        {{name}}
+    </div>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                name: 'hello world'
+            }
+        })
+    </script>
 </asp:Content>

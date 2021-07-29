@@ -44,7 +44,7 @@ namespace BLL.Services
             return _mapper.Map<E, T>(_repository.Find(id));
         }
 
-        public List<T> GetAll()
+        public ICollection<T> GetAll()
         {
             return _mapper
                 .Map<IQueryable<E>, IQueryable<T>>(_repository.GetAll())

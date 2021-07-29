@@ -15,6 +15,7 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
 
 </head>
 <body>
@@ -47,24 +48,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Имя приложения</a>
+                    <a class="navbar-brand" runat="server" href="~/">Записная книжка</a>
                 </div>
-                <div class="navbar-collapse collapse">
+<%--                <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Домашняя</a></li>
                         <li><a runat="server" href="~/About">Информация</a></li>
                         <li><a runat="server" href="~/Contact">Связаться</a></li>
                     </ul>
-                </div>
+                </div>--%>
             </div>
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - мое приложение ASP.NET</p>
-            </footer>
         </div>
 
     </form>

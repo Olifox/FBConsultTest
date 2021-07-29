@@ -9,7 +9,7 @@ namespace BLL.Interfaces
 {
     public interface IBaseService<T> where T : BaseDTO
     {
-        List<T> GetAll();
+        ICollection<T> GetAll();
         T Find(int id);
         void Add(T item);
         void Update(T item);
