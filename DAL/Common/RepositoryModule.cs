@@ -10,8 +10,7 @@ namespace DAL.Common
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //builder.RegisterType<AppDbContext>().AsSelf();
-            builder.RegisterType(typeof(AppDbContext)).AsSelf().As(typeof(DbContext)).InstancePerLifetimeScope();
+            builder.RegisterType<AppDbContext>().AsSelf();
 
             builder.RegisterType<ContactRepository>().As<IBaseRepository<Contact>>().InstancePerLifetimeScope();
 

@@ -13,9 +13,9 @@ namespace FBConsultTest.Controllers
 {
     public class ContactController : ApiController
     {
-        private IContactService _service;
+        private IBaseService<ContactDTO> _service;
         private IMapper _mapper;
-        public ContactController(IContactService service)
+        public ContactController(IBaseService<ContactDTO> service)
         {
             var config = new MapperConfiguration(cfg =>
             {

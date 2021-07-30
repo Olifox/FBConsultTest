@@ -46,9 +46,12 @@ namespace BLL.Services
 
         public ICollection<T> GetAll()
         {
-            return _mapper
-                .Map<IQueryable<E>, IQueryable<T>>(_repository.GetAll())
-                .ToList();
+            var items = _repository.GetAll().ToList();
+            if (items.Any())
+                return _mapper
+                    .Map<ICollection<E>, ICollection<T>>(items);
+            else
+                return null;
         }
 
         public void Update(T item)

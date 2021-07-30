@@ -10,7 +10,7 @@ using System.Web.Routing;
 
 namespace FBConsultTest
 {
-    public class Global : HttpApplication/*, IContainerProviderAccessor*/
+    public class Global : HttpApplication
     {
         void Application_Start(object sender, EventArgs e)
         {
@@ -23,11 +23,6 @@ namespace FBConsultTest
             builder.RegisterModule(new ServiceModule());
             var container = builder.Build();
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
-
-            RouteTable.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = System.Web.Http.RouteParameter.Optional });
         }
     }
 }

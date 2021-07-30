@@ -17,6 +17,6 @@ namespace DAL.Entities
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Sex { get; set; }
-        public DateTime Bithday { get; set; }
+        public DateTime? Bithday { get; set; }
     }
 }

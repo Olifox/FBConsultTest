@@ -4,19 +4,19 @@
 
 <html lang="ru">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> – мое приложение ASP.NET</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
-
+    
 </head>
 <body>
     <form runat="server">
@@ -50,7 +50,7 @@
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">Записная книжка</a>
                 </div>
-<%--                <div class="navbar-collapse collapse">
+                <%--                <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Домашняя</a></li>
                         <li><a runat="server" href="~/About">Информация</a></li>
