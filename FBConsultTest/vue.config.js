@@ -17,7 +17,8 @@
         },
         resolve: {
             alias: {
-                'vue$': 'vue/dist/vue.cjs'
+                'vue$': 'vue/dist/vue.esm.js',
+                'axios$': 'axios/dist/axios.js'
             }
         }
     },

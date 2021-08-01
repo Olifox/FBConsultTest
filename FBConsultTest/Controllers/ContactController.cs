@@ -21,12 +21,28 @@ namespace FBConsultTest.Controllers
             {
                 cfg.CreateMap<Contact, ContactDTO>();
                 cfg.CreateMap<ContactDTO, Contact>();
+                cfg.CreateMap<ContactDTO, ContactFullName>()
+                    .ForMember("FullName", opt => opt.MapFrom(c => string.Format("{0} {1} {2}", c.Surname, c.Name, c.Patronymic)));
             });
             _mapper = config.CreateMapper();
 
             _service = service;
         }
         // GET api/<controller>
+        [Route("GetFullName")]
+        [HttpGet]
+        public IHttpActionResult GetFullName()
+        {
+            var contacts = _mapper.Map<ICollection<ContactDTO>, ICollection<ContactFullName>>(_service.GetAll());
+
+            if (contacts == null)
+            {
+                return NotFound();
+            }
+            return Ok(contacts);
+
+        }
+
         [HttpGet]
         public IHttpActionResult Get()
         {

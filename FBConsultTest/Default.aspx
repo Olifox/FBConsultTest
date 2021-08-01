@@ -2,8 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div id="app">
-        <input type="text" name="name" v-model="name" />
-        {{name}}
+
     </div>
-    <script src="Scripts/Vue/Contact.js"></script>
+    <script src="wwwroot/dist/app.js"></script>
 </asp:Content>

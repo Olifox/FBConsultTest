@@ -15,7 +15,8 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/node_modules/bootstrap-vue/dist/bootstrap-vue.css" rel="stylesheet">
     
 </head>
 <body>
@@ -40,31 +41,21 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <%--<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" runat="server" href="~/">Записная книжка</a>
+                    <div id="add-button"></div>
                 </div>
-                <%--                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Домашняя</a></li>
-                        <li><a runat="server" href="~/About">Информация</a></li>
-                        <li><a runat="server" href="~/Contact">Связаться</a></li>
-                    </ul>
-                </div>--%>
             </div>
-        </div>
-        <div class="container body-content">
+        </div>--%>
+
+        <div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
         </div>
-
+        
     </form>
 </body>
 </html>

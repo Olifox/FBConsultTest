@@ -13,8 +13,8 @@ namespace FBConsultTest
         {
             RouteTable.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "{controller}/{action=Index}/{id}",
-                defaults: new { id = System.Web.Http.RouteParameter.Optional });
+                routeTemplate: "api/{controller}/{action}",
+                defaults: new { id = RouteParameter.Optional });
         }
     }
 }
