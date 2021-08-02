@@ -15,8 +15,8 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/node_modules/bootstrap-vue/dist/bootstrap-vue.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <%--<link href="~/node_modules/bootstrap-vue/dist/bootstrap-vue.css" rel="stylesheet">--%>
     
 </head>
 <body>
@@ -40,15 +40,6 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-        <%--<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" runat="server" href="~/">Записная книжка</a>
-                    <div id="add-button"></div>
-                </div>
-            </div>
-        </div>--%>
 
         <div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">

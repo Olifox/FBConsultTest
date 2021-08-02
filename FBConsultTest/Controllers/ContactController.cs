@@ -71,7 +71,7 @@ namespace FBConsultTest.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Contact item)
+        public IHttpActionResult Post(Contact item)
         {
             try
             {
