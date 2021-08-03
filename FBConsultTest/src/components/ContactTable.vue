@@ -11,7 +11,9 @@
                         <th>День рождения</th>
                     </tr>
                 </thead>
+
                 <tbody>
+
                     <tr v-for="contact in contacts">
                         <td>{{ contact.FullName }}</td>
                         <td>{{ contact.PhoneNumber }}</td>
@@ -21,7 +23,9 @@
                     </tr>
                 </tbody>
             </table>
+
             <p v-else="visible">Loading...</p>
+            <img src="../assets/change.svg" />
         </div>
     </div>
 </template>

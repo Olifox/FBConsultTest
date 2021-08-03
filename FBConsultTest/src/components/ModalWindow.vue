@@ -7,14 +7,10 @@
         name: 'modal',
         computed: {
             nameState() {
-                if (this.postBody.name.length > 2)
-                    this.nameFlag = null
-                return this.nameFlag
+                return this.postBody.name.length > 0 ? true : false
             },
             phoneState() {
-                if (!!regex.exec(this.postBody.phonenumber))
-                    this.phoneFlag = null
-                return this.phoneFlag
+                return !!regex.exec(this.postBody.phonenumber) ? true : false
             }
         },
         data() {
@@ -29,29 +25,15 @@
         },
         methods: {
             addContact: function () {
-                if (this.checkState()) {
-                    const str = JSON.stringify(this.postBody);
-                    console.log(str)
-                    const url = window.location.origin + '/api/Contact/Post'
-                    axios.post(url, this.postBody)
-                        .then(function (response) {
-                            console.log(response.data)
-                        })
-                        .catch(function (error) {
-                            console.log(error)
-                        })
-                }
-            },
-
-            checkState: function () {
-                const matches = regex.exec(this.postBody.phonenumber)
-                if (!!matches && this.postBody.name.length > 2)
-                    return true
-                else {
-                    this.phoneFlag = false
-                    this.nameFlag = false
-                    return false
-                }
+                console.log(str)
+                const url = window.location.origin + '/api/Contact/Post'
+                axios.post(url, this.postBody)
+                    .then(function (response) {
+                        console.log(response.data)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
             }
         },
     };
@@ -61,7 +43,10 @@
     <div>
         <b-container fluid>
             <b-row class="my-2">
-                <b-form-input v-model="postBody.name" :state="nameState" placeholder="Имя"></b-form-input>
+                <b-form-input id="input-name" v-model="postBody.name" :state="nameState" placeholder="Имя" aria-describedby="input-name-feedback"></b-form-input>
+                <b-form-invalid-feedback id="input-name-feedback">
+                    Введите имя
+                </b-form-invalid-feedback>
             </b-row>
             <b-row class="my-2">
                 <b-form-input v-model="postBody.surname" placeholder="Фамилия"></b-form-input>
@@ -70,7 +55,10 @@
                 <b-form-input v-model="postBody.patronymic" placeholder="Отчество"></b-form-input>
             </b-row>
             <b-row class="my-2">
-                <b-form-input v-model="postBody.phonenumber" :state="phoneState" typeof="tel" placeholder="Номер телефона"></b-form-input>
+                <b-form-input v-model="postBody.phonenumber" :state="phoneState" typeof="tel" placeholder="Номер телефона" aria-describedby="input-tel-feedback"></b-form-input>
+                <b-form-invalid-feedback id="input-tel-feedback">
+                    Введите номер
+                </b-form-invalid-feedback>
             </b-row>
             <b-row class="my-2">
                 <b-form-input v-model="postBody.email" type="email" placeholder="Email"></b-form-input>
