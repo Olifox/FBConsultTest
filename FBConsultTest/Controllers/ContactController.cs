@@ -29,24 +29,10 @@ namespace FBConsultTest.Controllers
             _service = service;
         }
         // GET api/<controller>
-        [Route("GetFullName")]
-        [HttpGet]
-        public IHttpActionResult GetFullName()
-        {
-            var contacts = _mapper.Map<ICollection<ContactDTO>, ICollection<ContactFullName>>(_service.GetAll());
-
-            if (contacts == null)
-            {
-                return NotFound();
-            }
-            return Ok(contacts);
-
-        }
-
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var contacts = _mapper.Map<ICollection<ContactDTO>, ICollection<Contact>>(_service.GetAll());
+            var contacts = _mapper.Map<ICollection<ContactDTO>, ICollection<ContactFullName>>(_service.GetAll());
 
             if (contacts == null)
             {
@@ -86,7 +72,7 @@ namespace FBConsultTest.Controllers
 
         // PUT api/<controller>/5
         [HttpPut]
-        public IHttpActionResult Put([FromBody] Contact item)
+        public IHttpActionResult Put(Contact item)
         {
             try
             {

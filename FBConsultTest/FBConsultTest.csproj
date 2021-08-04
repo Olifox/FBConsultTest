@@ -360,6 +360,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="src\components\ContactApiService.vue" />
     <None Include="src\components\NavBar.vue" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -433,6 +434,7 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.-->
   <Target Name="BeforeBuild">
+    <Exec Command="npm i" />
     <Exec Command="npm run build" />
   </Target>
   <!--<Target Name="AfterBuild">

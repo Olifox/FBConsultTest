@@ -1,35 +1,31 @@
 ﻿<template>
     <div>
-        <b-navbar toggleable="lg" type="dark" variant="info">
+        <b-navbar toggleable="lg" type="dark" variant="info" >
             <b-navbar-brand>NavBar</b-navbar-brand>
 
-            <b-navbar-nav small="true" class="ml-auto">
+            <b-navbar-nav class="ml-auto">
                 <b-nav-form>
-                    <img v-b-modal.modal-1 src="../assets/add.png" width="30" height="30">
+                    <img v-b-modal.add-modal src="../assets/add.png" width="30" height="30">
                 </b-nav-form>
             </b-navbar-nav>
         </b-navbar>
-        <b-modal id="modal-1" hide-footer title="BootstrapVue">
-            <modal/>
+        <b-modal id="add-modal" hide-footer title="Добавить контакт">
+            <modal parent="add-modal" @update="save"/>
         </b-modal>
-    </div>  
+    </div>
 </template>
 
 <script>
+    import { eventBus } from '../main'
     import modal from './ModalWindow.vue'
+
     export default {
-        name: 'add-button',
-        data() {
-            return {
-                buttonPushed: false
-            }
-        },
         components: {
             modal
         },
         methods: {
-            open() {
-                this.$emit('open');
+            save() {
+                eventBus.$emit("update");
             }
         }
     }
