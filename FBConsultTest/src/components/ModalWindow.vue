@@ -1,7 +1,6 @@
 ﻿<script>
     import api from './ContactApiService.vue'
-
-    const regex = /^(\+7|7|8)?[\s\-]?\(?[383][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/gm;
+    const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance()
 
     export default {
         name: 'modal',
@@ -21,7 +20,12 @@
                 return this.contact.name.length > 0 ? true : false
             },
             phoneState() {
-                return !!regex.exec(this.contact.phonenumber) ? true : false
+                try {
+                    return phoneUtil.isValidNumberForRegion(phoneUtil.parse(this.contact.phonenumber, 'RU'), 'RU');
+                }
+                catch {
+                    return false;
+                }
             }
         },
         data() {
