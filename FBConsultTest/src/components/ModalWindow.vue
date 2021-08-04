@@ -1,6 +1,7 @@
 ﻿<script>
     import api from './ContactApiService.vue'
     const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance()
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     export default {
         name: 'modal',
@@ -26,13 +27,20 @@
                 catch {
                     return false;
                 }
+            },
+            emailState() {
+                if (this.contact.email.length > 0)
+                    return re.test(this.contact.email);
+                else
+                    return null;
             }
         },
         data() {
             return {
                 contact: {
                     name: '',
-                    phonenumber: ''
+                    phonenumber: '',
+                    email: ''
                 },
                 phoneFlag: null,
                 nameFlag: null,
@@ -89,7 +97,7 @@
                 </b-form-invalid-feedback>
             </b-row>
             <b-row class="my-2">
-                <b-form-input v-model="contact.email" type="email" placeholder="Email"></b-form-input>
+                <b-form-input v-model="contact.email" type="email" placeholder="Email" :state="emailState" ></b-form-input>
             </b-row>
             <b-row class="my-2">
                 <b-form-group label="Пол:" v-slot="{ ariaDescribedby }">
@@ -102,7 +110,7 @@
             </b-row>
         </b-container>
         <b-button class="mt-2 float-left" @click="hide">Отмена</b-button>
-        <b-button :disabled="!phoneState || !nameState" class="mt-2 float-right" variant="success" @click="addContact">Сохранить</b-button>
+        <b-button :disabled="!phoneState || !nameState  || (emailState==false)" class="mt-2 float-right" variant="success" @click="addContact">Сохранить</b-button>
     </div>
 </template>
 
